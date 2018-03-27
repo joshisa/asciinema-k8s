@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+mix ecto.migrate
+mix run priv/repo/seeds.exs
