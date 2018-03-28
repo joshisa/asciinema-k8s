@@ -19,9 +19,9 @@ module ApplicationHelper
 
   def page_title
     if content_for?(:title)
-      "#{content_for(:title)} - asciinema".html_safe
+      "#{content_for(:title)} - KubeTube".html_safe
     else
-      "asciinema - Record and share your terminal sessions, the right way"
+      "KubeTube on ICP - Share your terminal sessions, the right way"
     end
   end
 

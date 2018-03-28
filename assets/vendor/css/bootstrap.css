@@ -2203,8 +2203,8 @@ fieldset[disabled] .btn-danger.active {
 
 .btn-success {
   color: #ffffff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: #3F8EE3;
+  border-color: #255588;
 }
 
 .btn-success:hover,
@@ -2238,8 +2238,8 @@ fieldset[disabled] .btn-success:active,
 .btn-success.disabled.active,
 .btn-success[disabled].active,
 fieldset[disabled] .btn-success.active {
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: #255588;
+  border-color: #19385a;
 }
 
 .btn-info {

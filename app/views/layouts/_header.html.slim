@@ -16,6 +16,8 @@ header.navbar.navbar-default[role="navigation"]
           = link_to "Docs", "/#{ENV['RAILS_RELATIVE_URL_ROOT']}/docs"
         li
           = link_to "Blog", 'http://blog.asciinema.org'
+        li
+          = link_to "Console", "https://#{ENV['URL_HOST']}:8443/console"
 
       ul.nav.navbar-nav.navbar-right.session-info
         - if current_user
