@@ -6,8 +6,8 @@ defmodule Asciinema.Accounts do
 
   def create_asciinema_user!() do
     attrs = %{username: "asciinema",
-              name: "asciinema",
-              email: "support@asciinema.org"}
+              name: "KubeTube",
+              email: "ibm.asciinema@gmail.com"}
 
     user = case Repo.get_by(User, username: "asciinema") do
              nil ->
@@ -23,7 +23,7 @@ defmodule Asciinema.Accounts do
                             filename: "asciicast.json",
                             content_type: "application/json"}
 
-      {:ok, _} = Asciicasts.create_asciicast(user, upload, %{private: false, snapshot_at: 76.2})
+      {:ok, _} = Asciicasts.create_asciicast(user, upload, %{private: false, snapshot_at: 225})
     end
 
     :ok
