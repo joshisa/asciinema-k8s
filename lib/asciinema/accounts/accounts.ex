@@ -6,8 +6,8 @@ defmodule Asciinema.Accounts do
 
   def create_asciinema_user!() do
     attrs = %{username: "asciinema",
-              name: "KubeTube",
-              email: "ibm.asciinema@gmail.com"}
+              name: "KubeTube on ICP",
+              email: System.get_env("KUBETUBE_ADMIN_EMAIL")}
 
     user = case Repo.get_by(User, username: "asciinema") do
              nil ->
