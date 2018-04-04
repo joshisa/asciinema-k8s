@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
     path = get_stored_location || default
 
     if options
-      redirect_to "/#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(path), options
+      redirect_to "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(path), options
     else
-      redirect_to "/#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(path)
+      redirect_to "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(path)
     end
   end
 
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     if request.xhr?
       render json: "Unauthorized", status: 403
     else
-      redirect_to("/#{ENV['RAILS_RELATIVE_URL_ROOT']}", alert: "You can't do that.")
+      redirect_to("#{ENV['RAILS_RELATIVE_URL_ROOT']}", alert: "You can't do that.")
     end
   end
 

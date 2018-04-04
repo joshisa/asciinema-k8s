@@ -10,7 +10,7 @@ module AsciicastsHelper
   def player_tag(asciicast, options, skip_titlebar)
     opts = {
       id: 'player',
-      src: "/#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(asciicast.url),
+      src: "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(asciicast.url),
       cols: options.cols || asciicast.width,
       rows: options.rows || asciicast.height,
       poster: options.poster || base64_poster(asciicast),
