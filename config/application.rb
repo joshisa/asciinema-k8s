@@ -26,6 +26,9 @@ module Asciinema
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/app/decorators/helpers)
     config.action_controller.relative_url_root = "#{ENV['RAILS_RELATIVE_URL_ROOT']}"
 
+    config.logger = Logger.new("/app/public/ApplicationLog")
+    config.log_level = :debug
+
     # Disable generation of helpers, javascripts, css, and view specs
     config.generators do |generate|
       generate.helper false

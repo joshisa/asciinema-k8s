@@ -22,7 +22,7 @@ defmodule AsciinemaWeb.UserController do
       {:ok, user} ->
         conn
         |> Auth.log_in(user)
-        |> put_rails_flash(:info, "Welcome to asciinema!")
+        |> put_rails_flash(:info, "Welcome to KubeTube!")
         |> redirect(to: Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/username/new"],""))
       {:error, :token_invalid} ->
         conn

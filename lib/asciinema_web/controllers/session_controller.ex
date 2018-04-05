@@ -41,9 +41,9 @@ defmodule AsciinemaWeb.SessionController do
   defp redirect_to_profile(conn) do
     case conn.assigns.current_user do
       %User{username: nil} ->
-        redirect(conn, to: Enum.join(["/", System.get_env("RAILS_RELATIVE_URL_ROOT"), "/username/new"],""))
+        redirect(conn, to: Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/username/new"],""))
       %User{} = user ->
-        redirect_back_or(conn, to: Enum.join(["/", System.get_env("RAILS_RELATIVE_URL_ROOT"), (profile_path(user))],""))
+        redirect_back_or(conn, to: Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), (profile_path(user))],""))
     end
   end
 end
