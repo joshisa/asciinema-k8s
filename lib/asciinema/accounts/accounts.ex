@@ -5,11 +5,11 @@ defmodule Asciinema.Accounts do
   alias Asciinema.{Repo, Asciicasts, Email, Mailer}
 
   def create_asciinema_user!() do
-    attrs = %{username: "asciinema",
+    attrs = %{username: "kubetube",
               name: "KubeTube on ICP",
               email: System.get_env("KUBETUBE_ADMIN_EMAIL")}
 
-    user = case Repo.get_by(User, username: "asciinema") do
+    user = case Repo.get_by(User, username: "kubetube") do
              nil ->
                %User{}
                |> User.create_changeset(attrs)
