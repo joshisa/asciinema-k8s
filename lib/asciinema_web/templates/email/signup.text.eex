@@ -1,0 +1,8 @@
+Welcome,
+
+Click the following link to create your account for your Asciinema kubernetes deployment at <%= Enum.join([AsciinemaWeb.Endpoint.url, System.get_env("RAILS_RELATIVE_URL_ROOT")],"") %>:
+
+<%= @signup_url %>
+
+
+If you did not initiate this request, just ignore this email. The request will expire shortly.

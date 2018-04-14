@@ -1,1 +1,0 @@
-# asciinema-k8s
