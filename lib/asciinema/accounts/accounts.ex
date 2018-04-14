@@ -5,11 +5,11 @@ defmodule Asciinema.Accounts do
   alias Asciinema.{Repo, Asciicasts, Email, Mailer}
 
   def create_asciinema_user!() do
-    attrs = %{username: "asciinema",
-              name: "asciinema",
-              email: "support@asciinema.org"}
+    attrs = %{username: "kubetube",
+              name: "KubeTube on ICP",
+              email: System.get_env("KUBETUBE_ADMIN_EMAIL")}
 
-    user = case Repo.get_by(User, username: "asciinema") do
+    user = case Repo.get_by(User, username: "kubetube") do
              nil ->
                %User{}
                |> User.create_changeset(attrs)
@@ -23,7 +23,7 @@ defmodule Asciinema.Accounts do
                             filename: "asciicast.json",
                             content_type: "application/json"}
 
-      {:ok, _} = Asciicasts.create_asciicast(user, upload, %{private: false, snapshot_at: 76.2})
+      {:ok, _} = Asciicasts.create_asciicast(user, upload, %{private: false, snapshot_at: 225})
     end
 
     :ok
@@ -96,7 +96,7 @@ defmodule Asciinema.Accounts do
 
   def signup_url(email) do
     token = signup_token(email)
-    AsciinemaWeb.Router.Helpers.users_url(AsciinemaWeb.Endpoint, :new, t: token)
+    Enum.join([AsciinemaWeb.Endpoint.url,System.get_env("RAILS_RELATIVE_URL_ROOT"),"/users/new?t=",token],"")
   end
 
   def login_token(%User{id: id, last_login_at: last_login_at}) do
@@ -106,7 +106,7 @@ defmodule Asciinema.Accounts do
 
   def login_url(%User{} = user) do
     token = login_token(user)
-    AsciinemaWeb.Router.Helpers.session_url(AsciinemaWeb.Endpoint, :new, t: token)
+    Enum.join([AsciinemaWeb.Endpoint.url,System.get_env("RAILS_RELATIVE_URL_ROOT"),"/session/new?t=",token],"")
   end
 
   @login_token_max_age 15 * 60 # 15 minutes

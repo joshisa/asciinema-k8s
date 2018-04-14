@@ -3,13 +3,21 @@ footer
     .row
       .col-md-4.col-xs-4
         ul.links
-          li = link_to 'About', about_path
-          li = link_to 'Contributing', contributing_path
-          li = link_to 'Terms of Service', tos_path
-          li = link_to 'Privacy Policy', privacy_path
-          li = link_to 'Contact', contact_path
+          li = link_to 'About', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(about_path)
+          li = link_to 'Contributing', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(contributing_path)
+          li = link_to 'Terms of Service', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(tos_path)
+          li = link_to 'Privacy Policy', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(privacy_path)
+          li = link_to 'Contact', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(contact_path)
 
-      .col-md-4.col-xs-4.text-center
+      .col-md-2.col-xs-2.text-center
+        span
+          ' Hosted on
+          br
+          ' IBM Cloud Private
+          br
+          a href="https://www.ibm.com/cloud/private" alt="IBM Cloud Private" rel="nofollow" = image_tag 'secure-icp.png', :style => "width:100%;height:100%;"
+
+      .col-md-2.col-xs-2.text-center
         span
           ' Sponsored by
           br

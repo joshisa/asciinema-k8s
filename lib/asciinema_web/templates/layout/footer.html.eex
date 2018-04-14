@@ -3,15 +3,27 @@
     <div class="row">
       <div class="col-md-4 col-xs-4">
         <ul class="links">
-          <li><a href="/about">About</a></li>
-          <li><a href="/contributing">Contributing</a></li>
-          <li><a href="/tos">Terms of Service</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/about"],"") %>">About</a></li>
+          <li><a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/contributing"],"") %>">Contributing</a></li>
+          <li><a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/tos"],"") %>">Terms of Service</a></li>
+          <li><a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/privacy"],"") %>">Privacy Policy</a></li>
+          <li><a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), "/contact"],"") %>">Contact</a></li>
         </ul>
       </div>
 
-      <div class="col-md-4 col-xs-4 text-center">
+      <div class="col-md-2 col-xs-2 text-center">
+        <span>
+          Hosted on
+          <br/>
+          IBM Cloud Private
+          <br/>
+          <a href="https://www.ibm.com/cloud/private" alt="IBM Cloud Private" rel="nofollow">
+            <img style="width:100%;height:100%;" src="<%= static_path(@conn, "/images/secure-icp.png") %>" />
+          </a>
+        </span>
+      </div>
+
+      <div class="col-md-2 col-xs-2 text-center">
         <span>
           Sponsored by
           <br/>

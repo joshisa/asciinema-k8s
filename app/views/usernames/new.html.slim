@@ -8,11 +8,11 @@
       p
         ' Every asciinema user gets a profile page at
         a href="#"
-          | #{root_url}~
+          | #{root_url}#{ENV['RAILS_RELATIVE_URL_ROOT']}/~
           strong username
         ' .
 
-      = form_for @user, url: username_path, method: :post, html: { class: "username-form" } do |f|
+      = form_for @user, url: ("#{ENV['RAILS_RELATIVE_URL_ROOT']}"<<username_path), method: :post, html: { class: "username-form" } do |f|
         .form-group
           = f.label :username, 'Your username:'
           = f.text_field :username, class: 'form-control', 'data-behavior' => 'focus'
@@ -28,5 +28,5 @@
               ' This username was already taken.
         .form-group
           = f.submit 'Continue', class: 'btn btn-primary'
-          a.btn href=skip_username_path I'll do it later
+          a.btn href=("#{ENV['RAILS_RELATIVE_URL_ROOT']}"<<skip_username_path) I'll do it later
 

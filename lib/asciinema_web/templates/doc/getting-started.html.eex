@@ -10,7 +10,7 @@
   To start recording run the following command:
 </p>
 
-<pre><code>asciinema rec</code></pre>
+<pre><code>asciinema --insecure rec</code></pre>
 
 <p>
   This spawns a new shell instance and records all terminal output.
@@ -19,7 +19,7 @@
 </p>
 
 <p>
-  See <a href="<%= doc_path(@conn, :show, :usage) %>">usage instructions</a> to learn about all commands and options.
+  See <a href="<%= Enum.join([System.get_env("RAILS_RELATIVE_URL_ROOT"), doc_path(@conn, :show, :usage)], "") %>">usage instructions</a> to learn about all commands and options.
 </p>
 
 <h2>3. Manage your recordings (optional)</h2>

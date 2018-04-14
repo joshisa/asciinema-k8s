@@ -5,7 +5,7 @@ defmodule Asciinema.Email do
   def signup_email(email_address, signup_url) do
     base_email()
     |> to(email_address)
-    |> subject("Welcome to #{instance_hostname()}")
+    |> subject("Welcome to KubeTube [#{instance_hostname()}]")
     |> render("signup.text", signup_url: signup_url)
     |> render("signup.html", signup_url: signup_url)
   end

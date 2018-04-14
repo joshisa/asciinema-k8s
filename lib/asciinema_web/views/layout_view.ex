@@ -4,8 +4,8 @@ defmodule AsciinemaWeb.LayoutView do
 
   def page_title(conn) do
     case conn.assigns[:page_title] do
-      nil -> "asciinema - Record and share your terminal sessions, the right way"
-      title -> title <> " - asciinema" # TODO return safe string here?
+      nil -> "KubeTube on ICP - Share your terminal sessions, the right way"
+      title -> title <> " - KubeTube" # TODO return safe string here?
     end
   end
 end

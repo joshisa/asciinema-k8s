@@ -33,14 +33,14 @@ ARG NODE_VERSION=node_6.x
 ARG DISTRO=xenial
 
 RUN apt-get update && \
-    apt-get install -y wget software-properties-common apt-transport-https && \
+    apt-get install -y --no-install-recommends wget software-properties-common apt-transport-https && \
     add-apt-repository ppa:brightbox/ruby-ng && \
     echo "deb https://deb.nodesource.com/$NODE_VERSION $DISTRO main" >/etc/apt/sources.list.d/nodesource.list && \
     echo "deb https://packages.erlang-solutions.com/ubuntu $DISTRO contrib" >/etc/apt/sources.list.d/esl.list && \
     wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
     wget --quiet -O - https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | apt-key add - && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
       build-essential \
       elixir=1.5.2-1 \
       esl-erlang=1:20.1 \
@@ -54,7 +54,8 @@ RUN apt-get update && \
       ruby2.1 \
       ruby2.1-dev \
       ttf-bitstream-vera \
-      tzdata
+      tzdata && \
+    rm -rf /var/lib/apt/lists/*
 
 # Packages required for:
 #   libfontconfig1 for PhantomJS
@@ -149,7 +150,7 @@ RUN cd assets && npm install
 
 COPY assets /app/assets
 RUN cd assets && node_modules/brunch/bin/brunch build --production
-RUN mix phoenix.digest
+RUN mix phx.digest
 RUN cp -r public/assets priv/static/
 
 # add Elixir source files
@@ -182,7 +183,7 @@ COPY --from=1 /usr/local/bin/pngquant /usr/local/bin/
 
 VOLUME ["/app/log", "/app/uploads", "/cache"]
 
-CMD ["mix", "phx.server"]
+CMD ["echo -e '\xE2\x8E\x88   Welcome to the game.  Ready Player One'"]
 
 ENV PORT 4000
 

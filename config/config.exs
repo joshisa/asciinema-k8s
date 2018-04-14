@@ -13,6 +13,7 @@ config :asciinema,
 config :asciinema, AsciinemaWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  static_url: [path: System.get_env("RAILS_RELATIVE_URL_ROOT")],
   render_errors: [view: AsciinemaWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Asciinema.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -20,6 +21,7 @@ config :asciinema, AsciinemaWeb.Endpoint,
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
+  level: :debug,
   metadata: [:request_id]
 
 config :phoenix, :template_engines,

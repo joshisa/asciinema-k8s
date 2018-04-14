@@ -3,15 +3,17 @@
     .container
       .row
         .col-md-5
-          h1
-            ' Record and share your terminal sessions, the&nbsp;right&nbsp;way.
+          h1 style="color:#FFDB99"
+            span style="font-size:60px;font-weight:bold;color:orange"
+               ' KubeTube on IBM Cloud Private
+            ' Share terminal sessions, the&nbsp;right&nbsp;way.
           h2
             ' Forget screen recording apps and blurry video.
               Enjoy a lightweight, purely text-based approach to terminal recording.
           p
             ' &nbsp;
           p
-            button type="button" class="btn btn-success" data-toggle="popover" data-content="#{render(partial: 'docs/quick_install').gsub('"', "'")} <p>Start recording with:</p><pre>asciinema rec</pre>" Start Recording
+            button type="button" class="btn btn-success" data-toggle="popover" data-content="#{render(partial: 'docs/quick_install').gsub('"', "'")} <p>Start recording with:</p><pre>asciinema --insecure rec</pre>" Start Recording
           p
             ' Supports Linux, Mac OS X and *BSD
 
@@ -24,25 +26,48 @@
       .row.about
         .col-md-12
           h3
-            ' asciinema
+            ' Powered by asciinema
             em
               abbr title="from English ASCII + from Ancient Greek κίνημα (kínēma, “movement”)"
                 ' [as-kee-nuh-muh]
-            ' is a free and open source solution for recording
-              terminal sessions and sharing them on the web. Read about
-            a href="/docs/how-it-works" how it works
+            ' an open source solution for recording
+              and sharing terminal sessions. Read about
+            a href="#{ENV['RAILS_RELATIVE_URL_ROOT']}/docs/how-it-works" how it works
             ' .
 
   section.odd
     .container
-      .row.features
+      .row.features.border-between style="border-bottom: 1px solid;"
+        .col-md-4
+          h1 People
+          p
+            ' Scale out the learning of your enterprise.  Learn by watching & copying.
+              Command line 101s, installation walkthroughs, workload deployment tutorials.
+              Treat CLI interactions as code and create a governed repository of live guidance. 
+
+        .col-md-4
+          h1 Process
+          p
+            ' Imagine having your ICP OPs playbooks documented and coming to life. IBM Support best practices              
+              in motion for data collection, troubleshooting and diagnostics.  Context is everything,
+              and with KubeTube we're offering a package deal. See the command and watch the related response for free! 
+
+        .col-md-4
+          h1 Technology
+          p
+            ' Smart engineers love solving and sharing. Empower your ICP devs to share CLI tricks and tips.
+              Communicate snippets and whole scripts.  Generate animated GIFs to embed in github issues.
+              Live and in motion.  See cause and effect.  Supercharge your dev skill sharing and overall
+              organization productivity.            
+
+      .row.features style="padding-top: 15px"
         .col-md-4
           h1 Simple recording
           p
             ' Record right where you work - in a terminal.
               To start just run <code>asciinema rec</code>, to finish hit <kbd>Ctrl-D</kbd> or type <code>exit</code>.
           p
-            a href="/docs/getting-started" Get started &raquo;
+            a href="#{ENV['RAILS_RELATIVE_URL_ROOT']}/docs/getting-started" Get started &raquo;
 
         .col-md-4
           h1 Copy & paste
@@ -56,7 +81,7 @@
           p
             ' Easily embed an asciicast player in your blog post, project documentation page or in your conference talk slides.
           p
-            a href="/docs/embedding" See the embedding docs &raquo;
+            a href="#{ENV['RAILS_RELATIVE_URL_ROOT']}/docs/embedding" See the embedding docs &raquo;
 
   section.even
     .container
@@ -66,11 +91,15 @@
           .asciicast-list
             = render 'asciicasts/previews', asciicasts: page.featured_asciicasts, per_row: 3, no_created_at: true
           p
-            a href=category_path(:featured) class="btn btn-success" Explore featured asciicasts
+            ruby:
+              urlfeatpatch = "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(category_path(:featured))
+            a href=urlfeatpatch class="btn btn-success" Explore featured asciicasts
       .row
         .col-md-12
           h1 Latest public asciicasts
           .asciicast-list
             = render 'asciicasts/previews', asciicasts: page.latest_asciicasts, per_row: 3
           p
-            a href=browse_path class="btn btn-success" Explore all asciicasts
+            ruby:
+              urllatepatch="#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(browse_path)
+            a href=urllatepatch class="btn btn-success" Explore all asciicasts
