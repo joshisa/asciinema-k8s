@@ -28,6 +28,8 @@ defmodule AsciinemaWeb.Router do
   scope "/", AsciinemaWeb do
     pipe_through :browser # Use the default browser stack
 
+    get "/browse", AsciicastController, :index
+    get "/browse/featured", AsciicastController, :featured
     get "/a/:id/iframe", AsciicastController, :iframe
 
     get "/docs", DocController, :index
@@ -41,6 +43,12 @@ defmodule AsciinemaWeb.Router do
 
     resources "/session", SessionController, only: [:new, :create], singleton: true
     get "/connect/:api_token", ApiTokenController, :show, as: :connect
+
+    get "/about", PageController, :about
+    get "/privacy", PageController, :privacy
+    get "/tos", PageController, :tos
+    get "/contact", PageController, :contact
+    get "/contributing", PageController, :contributing
   end
 
   scope "/api", AsciinemaWeb.Api, as: :api do

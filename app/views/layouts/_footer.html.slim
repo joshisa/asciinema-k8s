@@ -3,11 +3,11 @@ footer
     .row
       .col-md-4.col-xs-4
         ul.links
-          li = link_to 'About', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(about_path)
-          li = link_to 'Contributing', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(contributing_path)
-          li = link_to 'Terms of Service', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(tos_path)
-          li = link_to 'Privacy Policy', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(privacy_path)
-          li = link_to 'Contact', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat(contact_path)
+          li = link_to 'About', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat("/about")
+          li = link_to 'Contributing', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat("/contributing")
+          li = link_to 'Terms of Service', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat("/tos")
+          li = link_to 'Privacy Policy', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat("/privacy")
+          li = link_to 'Contact', "#{ENV['RAILS_RELATIVE_URL_ROOT']}".concat("/contact")
 
       .col-md-2.col-xs-2.text-center
         span
@@ -26,6 +26,9 @@ footer
       .col-md-4.col-xs-4
         ul.links.pull-right
           li
+            b forum: 
+            a href="https://discourse.asciinema.org/" discourse.asciinema.org
+          li
             b irc: 
             a href="https://kiwiirc.com/nextclient/irc.freenode.net/#asciinema" #asciinema on freenode
           li
@@ -34,6 +37,3 @@ footer
           li
             b twitter: 
             = link_to '@asciinema', 'https://twitter.com/asciinema', title: 'Follow @asciinema on Twitter'
-          li
-            b e-mail: 
-            | support at this domain

@@ -29,7 +29,7 @@ RUN bash /tmp/install_pngquant.sh
 FROM ubuntu:16.04
 
 ARG DEBIAN_FRONTEND=noninteractive
-ARG NODE_VERSION=node_6.x
+ARG NODE_VERSION=node_8.x
 ARG DISTRO=xenial
 
 RUN apt-get update && \
@@ -42,7 +42,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
       build-essential \
-      elixir=1.5.2-1 \
+      elixir=1.6.3-1 \
       esl-erlang=1:20.1 \
       git-core \
       libfontconfig1 \
@@ -141,15 +141,16 @@ RUN bundle exec rake assets:precompile
 COPY mix.* /app/
 RUN mix deps.get --only prod && mix deps.compile
 
-# install brunch & co
+# install webpack & co
 
 COPY assets/package.json /app/assets/
+COPY assets/package-lock.json /app/assets/
 RUN cd assets && npm install
 
-# compile assets with brunch and generate digest file
+# compile assets with webpack and generate digest file
 
 COPY assets /app/assets
-RUN cd assets && node_modules/brunch/bin/brunch build --production
+RUN cd assets && npm run deploy
 RUN mix phx.digest
 RUN cp -r public/assets priv/static/
 

@@ -48,7 +48,7 @@ services:
 
   phoenix:
     build: .
-    image: asciinema/asciinema-server:develop
+    image: asciinema/asciinema-server:latest
     command: mix phx.server
     container_name: asciinema_phoenix
     restart: unless-stopped
@@ -66,7 +66,7 @@ services:
 
   rails:
     build: .
-    image: asciinema/asciinema-server:develop
+    image: asciinema/asciinema-server:latest
     command: bundle exec unicorn -c config/unicorn.rb
     container_name: asciinema_rails
     restart: unless-stopped

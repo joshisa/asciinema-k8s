@@ -1,9 +1,7 @@
-import css from '../css/app.scss';
+import css from '../css/app2.scss';
 
 import $ from 'jquery';
 import "bootstrap";
-import "phoenix_html";
-
 import "phoenix_html";
 
 $(function() {
