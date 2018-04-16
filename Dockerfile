@@ -32,7 +32,10 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG NODE_VERSION=node_8.x
 ARG DISTRO=xenial
 
-RUN apt-get update && \
+RUN apt-get update -o Acquire::CompressionTypes::Order::=gz -o Debug::Acquire::http::=true -o Debug::pkgAcquire::Auth::=true -o Debug::Hashs::=true\
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get update -y && \
     apt-get install -y --no-install-recommends wget software-properties-common apt-transport-https && \
     add-apt-repository ppa:brightbox/ruby-ng && \
     echo "deb https://deb.nodesource.com/$NODE_VERSION $DISTRO main" >/etc/apt/sources.list.d/nodesource.list && \
