@@ -64,7 +64,8 @@ RUN apt-get update && \
 
 # install Bundler and SASS
 
-RUN gem install bundler sass
+RUN gem install bundler -v '1.3.0'
+RUN gem install sass -v '3.2.19'
 
 # install Hex and Rebar
 
@@ -92,7 +93,7 @@ WORKDIR /app
 # install gems
 
 COPY Gemfile* /app/
-RUN bundle install --deployment --without development test --jobs 10 --retry 5
+RUN bundle install --deployment --without development test
 
 # copy compiled vt
 
